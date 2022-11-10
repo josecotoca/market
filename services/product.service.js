@@ -8,13 +8,13 @@ class ProductService {
   }
 
   generate() {
-    const limit = 100;
+    const limit = 50;
     for (let index = 0; index < limit; index++) {
       this.products.push({
         id: faker.datatype.uuid(),
-        name: faker.commerce.productName(),
+        title: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),
-        image: faker.image.imageUrl(),
+        image: faker.image.fashion(640, 480, true),
         isBlock: faker.datatype.boolean()
       });
     }
@@ -32,7 +32,7 @@ class ProductService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(this.products);
-      }, 5000)
+      }, 1000)
     });
   }
 
