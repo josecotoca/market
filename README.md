@@ -9,4 +9,8 @@ Apirest for MyStore
    ```sh
    npm i
    ```
-3. View documentation browser in http://localhost:3000/api/v1/docs/
+3. Run server 
+   ```sh
+   npm run dev
+   ```
+4. See documentation in browser in url http://localhost:3000/api/v1/docs/
