@@ -1,19 +1,11 @@
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">ApiRest for my store in NodeJs</a>
-    </li>
-  </ol>
-</details>
-
+# ApiRest for my store in NodeJs 💚
+Apires for MyStore
 ### Installation
-
 1. Clone the repo [https://github.com/josecotoca/my-store](git@github.com:josecotoca/my-store.git)
-  ```sh
+   ```sh
    git clone git@github.com:josecotoca/my-store.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
-   npm install
+   npm i
    ```
