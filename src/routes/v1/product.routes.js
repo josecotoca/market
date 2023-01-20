@@ -33,12 +33,6 @@ router.get('/', async (request, response) => {
   response.json(products);
 });
 
-router.get('/filter', (request, response) => {
-  response.json(
-    { title: 'Product filter', price: 100 }
-  );
-});
-
 /**
  * @openapi
  * /api/v1/products/{id}:
@@ -123,6 +117,42 @@ async (request, response) => {
   });
 });
 
+/**
+ * @openapi
+ * /api/v1/products/{id}:
+ *   patch:
+ *     description: Update a product
+ *     tags:
+ *       - Products
+ *     requestBody:
+ *       description: Product
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/ProductNoId"
+ *     parameters:
+ *       - name: id
+ *         description: id of the product
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       201:
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 router.patch('/:id',
   validatorHandler(getProductSchema, 'params'),
   validatorHandler(updateProductSchema,'body'),
@@ -142,12 +172,41 @@ router.patch('/:id',
   }
 );
 
+/**
+ * @openapi
+ * /api/v1/products/{id}:
+ *   delete:
+ *     description: Delete a product
+ *     tags:
+ *       - Products
+ *     parameters:
+ *       - name: id
+ *         description: id of the product
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       202:
+ *         description: Acepted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 router.delete('/:id', async (request, response) => {
   const { id } = request.params;
   const result = await service.delete(id);
-  response.json({
+  response.status(202).json({
     message: 'deleted',
-    result
+    data: result
   });
 });
 
